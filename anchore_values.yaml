@@ -1,0 +1,104 @@
+# Custom Anchore Values chart
+
+# Create an ingress resource for all external anchore engine services (API & Enterprise UI).
+# By default this chart is setup to use the NGINX ingress controller which needs to be installed & configured on your cluster.
+# To utilize a GCE/ALB ingress controller comment out the nginx annotations below, change ingress.class, edit path configurions as per the comments, & set API/UI services to use NodePort.
+ingress:
+  enabled: true
+  # Use the following paths for GCE/ALB ingress controller
+  apiPath: /v1/*
+  uiPath: /*
+    # apiPath: /v1/
+    # uiPath: /
+    # Uncomment the following lines to bind on specific hostnames
+    # apiHosts:
+    #   - anchore-api.example.com
+    # uiHosts:
+    #   - anchore-ui.example.com
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  tls: []
+    # Secrets must be manually created in the namespace.
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
+
+# Pod configuration for the anchore engine api service.
+anchoreApi:
+  replicaCount: 1
+
+  # Set extra environment variables. These will be set on all api containers.
+  extraEnv: []
+    # - name: foo
+    #   value: bar
+
+  # kubernetes service configuration for anchore external API
+  service:
+    type: NodePort
+    port: 8228
+    annotations: {}
+
+  # resources:
+  #  limits:
+  #    cpu: 100m
+  #    memory: 6Gi
+  #  requests:
+  #    cpu: 100m
+  #    memory: 4Gi
+
+  annotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+anchoreEnterpriseGlobal:
+  enabled: true
+
+# Configure the Anchore Enterprise UI.
+anchoreEnterpriseUi:
+  # If enabled is set to false, set anchore-ui-redis.enabled to false to ensure that helm doesn't stand up a unneccessary redis instance.
+  enabled: true
+  image: docker.io/anchore/enterprise-ui:v0.3.3
+  imagePullPolicy: IfNotPresent
+
+  # Set extra environment variables. These will be set on all UI containers.
+  extraEnv: []
+    # - name: foo
+    #   value: bar
+
+  # Specifies whether to trust a reverse proxy when setting secure cookies (via the `X-Forwarded-Proto` header).
+  enableProxy: false
+  # Specifies if SSL is enabled in the web app container.
+  enableSsl: false
+  # Specifies if a single set of user credentials can be used to start multiple Anchore Enterprise UI sessions; for
+  # example, by multiple users across different systems, or by a single user on a single system across multiple browsers.
+  #
+  # When set to `false`, only one session per credential is permitted at a time, and logging in will invalidate any other
+  # sessions that are using the same set of credentials. Note that setting this property to `false` does not prevent a
+  # single session from being viewed within multiple *tabs* inside the same browser.
+  enableSharedLogin: true
+  # The redisFlushdb` key specifies if the Redis datastore containing
+  # user session keys and data is emptied on application startup. If the datastore
+  # is flushed, any users with active sessions will be required to re-authenticate.
+  redisFlushdb: true
+
+  # kubernetes service configuration for anchore UI
+  service:
+    type: NodePort
+    port: 80
+    annotations: {}
+    sessionAffinity: ClientIP
+
+  # resources:
+  #  limits:
+  #    cpu: 100m
+  #    memory: 8Gi
+  #  requests:
+  #    cpu: 100m
+  #    memory: 3Gi
+
+  annotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
