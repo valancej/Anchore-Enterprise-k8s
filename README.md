@@ -23,4 +23,4 @@ ip-10-0-3-157.us-east-2.compute.internal   Ready     <none>    1d        v1.12.7
 
 ### Anchore Helm Chart Configuration
 
-To make proper configurations to the Helm chart, create a custom `anchore_values.yaml` file and utilize it when installing. There are 
+To make proper configurations to the Helm chart, create a custom `anchore_values.yaml` file and utilize it when installing. There are many options for configuration with Anchore, for the purposes of this document, I will only change the minimum to get Anchore Enterprise installed. There is an [anchore_values.yaml](anchore_values.yaml) file in this repository, that you may include in your installation. 
