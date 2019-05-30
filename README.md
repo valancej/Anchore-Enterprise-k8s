@@ -194,3 +194,4 @@ Events:
 I can see above that an ELB has been created and I can navigate to the specified address: 
 
 ![enterprise-ui](images/enterprise-ui.png)
+
