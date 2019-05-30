@@ -1,6 +1,6 @@
 # Anchore Enterprise EKS Installation
 
-The purpose of this document is to walkthrough the installation of Anchore Enterprise on EKS with Helm. Anchore currently maintains a [Helm Chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) which I will use to install the necessary Anchore components. 
+In this post I will walkthrough the installation of Anchore Enterprise 2.0 on EKS with Helm. Anchore currently maintains a [Helm Chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) which I will use to install the necessary Anchore components. 
 
 ## Prerequisites
 
@@ -198,3 +198,7 @@ I can see above that an ELB has been created and I can navigate to the specified
 Once I login to the UI and begin to analyze images, I can see the following vulnerability and policy evaluation metrics displaying on the dashboard. 
 
 ![dashboard](images/dashboard.png)
+
+## Conclusion
+
+You now have an installation of Anchore Enterprise up and running on Amazon EKS. For more info on Anchore Engine or Enterprise, you can join our community [Slack channel](https://anchore.com/slack), or request a [technical demo](https://anchore.com/get-anchore/).
