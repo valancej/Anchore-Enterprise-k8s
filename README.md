@@ -195,3 +195,6 @@ I can see above that an ELB has been created and I can navigate to the specified
 
 ![enterprise-ui](images/enterprise-ui.png)
 
+Once I login to the UI and begin to analyze images, I can see the following vulnerability and policy evaluation metrics displaying on the dashboard. 
+
+![dashboard](images/dashboard.png)
