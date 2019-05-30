@@ -201,4 +201,4 @@ Once I login to the UI and begin to analyze images, I can see the following vuln
 
 ## Conclusion
 
-You now have an installation of Anchore Enterprise up and running on Amazon EKS. For more info on Anchore Engine or Enterprise, you can join our community [Slack channel](https://anchore.com/slack), or request a [technical demo](https://anchore.com/get-anchore/).
+You now have an installation of Anchore Enterprise up and running on Amazon EKS. The complete contents for the walkthrough are available by navigating to the GitHub repo [here](https://github.com/valancej/Anchore-Enterprise-k8s). For more info on Anchore Engine or Enterprise, you can join our community [Slack channel](https://anchore.com/slack), or request a [technical demo](https://anchore.com/get-anchore/).
