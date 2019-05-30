@@ -1,6 +1,6 @@
 # Anchore Enterprise EKS Installation
 
-In this post I will walkthrough the installation of Anchore Enterprise 2.0 on EKS with Helm. Anchore currently maintains a [Helm Chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) which I will use to install the necessary Anchore components. 
+In this post I will walkthrough the installation of Anchore Enterprise 2.0 on Amazon EKS with Helm. Anchore currently maintains a [Helm Chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) which I will use to install the necessary Anchore components. 
 
 ## Prerequisites
 
